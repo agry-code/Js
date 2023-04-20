@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Posiciones con divs</title>
+	<style>
+        		html, body {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+		.container {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+		.item {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 100px;
+			height: 100px;
+			background-color: #ccc;
+			font-size: 2rem;
+			font-weight: bold;
+			margin: 10px;
+		}
+		.item:nth-child(1) {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		.item:nth-child(2) {
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
+		.item:nth-child(3) {
+			position: relative;
+		}
+		.item:nth-child(4) {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+		}
+		.item:nth-child(5) {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+		}
+	</style>
+    <script ></script>
+</head>
+<body>
+	<div class="container">
+		<div class="item">1</div>
+		<div class="item">2</div>
+		<div class="item">3</div>
+		<div class="item">4</div>
+		<div class="item">5</div>
+	</div>
+</body>
+</html>
