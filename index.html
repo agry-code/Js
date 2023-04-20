@@ -3,7 +3,7 @@
 <head>
 	<title>Posiciones con divs</title>
 	<style>
-        		html, body {
+        html, body {
 			height: 100%;
 			margin: 0;
 			padding: 0;
@@ -53,15 +53,49 @@
 			right: 0;
 		}
 	</style>
-    <script ></script>
+	<script>
+		function pedirPosicion() {
+			var posicion = prompt("Ingresa la posición (1-5):");
+			var color = prompt("Ingresa un color (rojo, amarillo o verde):");
+			crearPiramide(posicion, color);
+		}
+		function crearPiramide(posicion, color) {
+			var elemento = document.getElementById("d" + posicion);
+			var altura = 5;
+			var caracteres = "";
+			// borra el contenido anterior
+			elemento.innerHTML = "";
+			switch(color) {
+				case "rojo":
+					elemento.style.backgroundColor = "red";
+					break;
+				case "amarillo":
+					elemento.style.backgroundColor = "yellow";
+					break;
+				case "verde":
+					elemento.style.backgroundColor = "green";
+					break;
+				default:
+					alert("El color ingresado no es válido");
+			}
+			for (var i = 0; i < altura; i++) {
+				caracteres += "#";
+				elemento.innerHTML += caracteres + "<br>";
+			}
+		}
+	</script>
 </head>
 <body>
 	<div class="container">
-		<div class="item">1</div>
-		<div class="item">2</div>
-		<div class="item">3</div>
-		<div class="item">4</div>
-		<div class="item">5</div>
+		<div class="item" id="d1">1</div>
+		<div class="item" id="d2">2</div>
+		<div class="item" id="d3">3</div>
+		<div class="item" id="d4">4</div>
+		<div class="item" id="d5">5</div>
 	</div>
+	<script>
+		pedirPosicion();
+	</script>
 </body>
 </html>
+
