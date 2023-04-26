@@ -1,101 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Posiciones con divs</title>
-	<style>
-        html, body {
-			height: 100%;
-			margin: 0;
-			padding: 0;
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden;
-        }
-		.container {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: center;
-			align-items: center;
-			height: 100vh;
-		}
-		.item {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			width: 100px;
-			height: 100px;
-			background-color: #ccc;
-			font-size: 2rem;
-			font-weight: bold;
-			margin: 10px;
-		}
-		.item:nth-child(1) {
-			position: absolute;
-			top: 0;
-			left: 0;
-		}
-		.item:nth-child(2) {
-			position: absolute;
-			top: 0;
-			right: 0;
-		}
-		.item:nth-child(3) {
-			position: relative;
-		}
-		.item:nth-child(4) {
-			position: absolute;
-			bottom: 0;
-			left: 0;
-		}
-		.item:nth-child(5) {
-			position: absolute;
-			bottom: 0;
-			right: 0;
-		}
-	</style>
-	<script>
-		function pedirPosicion() {
-			var posicion = prompt("Ingresa la posición (1-5):");
-			var color = prompt("Ingresa un color (rojo, amarillo o verde) (escribe la palabra):");
-			crearPiramide(posicion, color);
-		}
-		function crearPiramide(posicion, color) {
-			var elemento = document.getElementById("d" + posicion);
-			var altura = 5;
-			var caracteres = "";
-			// borra el contenido anterior
-			elemento.innerHTML = "";
-			switch(color) {
-				case "rojo":
-					elemento.style.backgroundColor = "red";
-					break;
-				case "amarillo":
-					elemento.style.backgroundColor = "yellow";
-					break;
-				case "verde":
-					elemento.style.backgroundColor = "green";
-					break;
-				default:
-					alert("El color ingresado no es válido");
-			}
-			for (var i = 0; i < altura; i++) {
-				caracteres += "#";
-				elemento.innerHTML += caracteres + "<br>";
-			}
-		}
-	</script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boni Carlos</title>
 </head>
+<style>
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+#col{
+display: flex;
+flex-direction: column;
+height: 100vh;
+width: 100vw;
+justify-content: space-between;
+    }
+    .fila{
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+}
+.cuadrito{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    text-align: center;
+    width: 10%;
+    height: 10vh;
+    background-color: lightgray;
+}
+#f2{
+    justify-content: center;
+}
+</style>
 <body>
-	<div class="container">
-		<div class="item" id="d1">1</div>
-		<div class="item" id="d2">2</div>
-		<div class="item" id="d3">3</div>
-		<div class="item" id="d4">4</div>
-		<div class="item" id="d5">5</div>
-	</div>
-	<script>
-		pedirPosicion();
-	</script>
-</body>
-</html>
 
+    <div id="col">
+        <div class="fila" id="f1">
+            <div class="cuadrito" id="c1" onclick="saludar('c1')">e1</div>
+            <div class="cuadrito" id="c2" onclick="saludar('c2')">e2</div>
+        </div>
+        <div class="fila" id="f2">
+            <div class="cuadrito" id="c3" onclick="saludar('c3')">e3</div>
+        </div>
+        <div class="fila" id="f3">
+            <div class="cuadrito" id="c4" onclick="saludar('c4')">e4</div>
+            <div class="cuadrito" id="c5" onclick="saludar('c5')">e5</div>
+        </div>
+    </div>
+</body>
+<script>
+    var colorFuente= "white";
+
+const muchosColores = ["green", "yellow", "purple", "red"];
+
+
+function saludar(id){
+let elem = document.getElementById(id);
+elem.style.color=colorFuente;
+elem.innerHTML="hello there";
+colorFuente=getComputedStyle(elem).backgroundColor;
+}
+function pintar(){
+for (let x=0; x<5; x++){
+let ident= "c"+(x+1);
+let cf= muchosColores[x];
+rellenar(ident,cf);
+}
+}
+function rellenar(id,colorFondo){
+let elem = document.getElementById(id);
+elem.style.backgroundColor=colorFondo;
+}
+
+pintar();
+
+</script>
+</html>
